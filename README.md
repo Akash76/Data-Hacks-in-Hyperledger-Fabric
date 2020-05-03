@@ -28,17 +28,19 @@ Now if you see at the docker-compose file of peers and orderer you can see a vol
 
 In peers, ledger data gets stored in /var/hyperledger/production. production folder has 5 subfolders: **chaincodes**, **externalbuilder**, **ledgersData**, **lifecycle**, **transientStore**. Inside ledgersData we have six folders: **bookkeeper**, **chains**, **configHistory**, **couchdbRedoLogs**, **fileLock**, **historyLeveldb**, **ledgerProvider**, **pvtdataStore**. Inside chains we have two other folders: **chains**, **index**. chains folder has all the channel data, a folder with name mychannel will have complete ledger data of that channel in file **blockfile_000000**.
 
+```
 .   .
 │   ├── chains
 │   │   ├── chains
 │   │   │   └── mychannel
 │   │   │       └── blockfile_000000
 .   .   .
+```
 
 ### IN ORDERER VOLUME
 
 In orderer, ledger data gets stored in /var/hyperledger/production/orderer folder. orderer has 3 folders: **chains**, **etcdraft**, **index**. chains has folders with name of channel and system-channel. All the folders have blockfile_000000. The **blockfile_000000** file in mychannel will have all the ledger data. If we have two or more channels, directories with their respective names will be created as it is orderer.
-
+```
 .
 ├── chains
 │   ├── mychannel
@@ -46,7 +48,7 @@ In orderer, ledger data gets stored in /var/hyperledger/production/orderer folde
 │   └── system-channel
 │       └── blockfile_000000
 .
-
+```
 ### DATA EXTRACTION
 
 lets take blockfile_000000 from orderer. It can be seen that fabcar chaincode is using json.Marshal() function to convert data to bytes before writing data to ledger. I have written a small code in js to extract json from a given string. Copying block file to our desired location and executing the js code will give us the json data that is present in ledger as seen below.
