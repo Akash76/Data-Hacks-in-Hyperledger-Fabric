@@ -96,6 +96,13 @@ $ node extract.js ./blockfile_000000
 
 Here we can see that the data we extracted is actually the one which we stored during initialising ledger. Eventhough I didn't enroll Admin or a user to invoke QueryAllCars function, I can visualize the data that is stored in ledger. If a hacker can compromise the server in which either a peer or an orderer is running, he can easily run his choice if he has a basic knowledge on fabric architecture. This may be very dangerous if it is a sensitive application.
 
+### ANOTHER HURDLE!
+
+Blockfile comprises of all important details like endorsement policies, admin and user certificates, channel policies and many more. If one can extract certificates from the blockfile, it is needless to mention dangerous consequences it lead to.
+
 ### WHAT CAN WE DO?
 
-I think you all have a clear idea about encryption and its advantages. Encryption can be one of many solutions to avoid unforeseen situations as mentioned in my article above. One can have a glance at [this](https://github.com/yeasy/docker-compose-files/blob/master/hyperledger_fabric/v2.1.0/examples/chaincode/go/enccc_example/utils.go) to get an idea on how to utilize encryption algorithms while implementing a chaincode.
+I think you all have a clear idea about encryption and its advantages. Encryption can be one of many solutions to avoid unforeseen situations as mentioned in my article above. One can have a glance at [this](https://github.com/yeasy/docker-compose-files/blob/master/hyperledger_fabric/v2.1.0/examples/chaincode/go/enccc_example/utils.go) to get an idea on how to utilize encryption algorithms while implementing a chaincode. Ciphertext is hard to understand, making it impossible for one to extract cipher data. 
+
+
+### CONCLUSION
