@@ -20,7 +20,7 @@ $ ./startFabric.sh
 
 By the time the script gets executed completely you will see the running containers as below.
 
-<IMAGE>
+![docker ps](docker-ps.png)
 
 Now if you see at the docker-compose file of peers and orderer you can see a volume mounted as orderer.example.com:/var/hyperledger/production/orderer in orderer and peer0.org1.example.com:/var/hyperledger/production in peer. Lets see what is there inside those paths.
 
@@ -52,6 +52,15 @@ In orderer, ledger data gets stored in /var/hyperledger/production/orderer folde
 ### DATA EXTRACTION
 
 lets take blockfile_000000 from orderer. It can be seen that fabcar chaincode is using json.Marshal() function to convert data to bytes before writing data to ledger. I have written a small code in js to extract json from a given string. Copying block file to our desired location and executing the js code will give us the json data that is present in ledger as seen below.
+Here is the small piece of code that helps us extracting json from a given string.
+
+
+```js
+const fs = require('fs')
+const extract = require('extract-json-from-string')
+console.log(extract(fs.readFileSync(process.argv[2], "ascii")))
+```
+Here we are passing the file as a command line argument. Passing blockfile as input gives following output.
 
 ```sh
 $ node extract.js ./blockfile_000000
@@ -88,5 +97,7 @@ $ node extract.js ./blockfile_000000
 Here we can observe data that is extracted is actually the one which we stored during initialising ledger. So here I didnt even enrolled Admin or a user to invoke QueryAllCars function but i am able to see the data that is stored in ledger. If a hacker is able to compromise the server in which either a peer or an orderer is stored, he can simply do what ever he want if he has some knowledge on fabric architecture. This may be very dangerous if it is a sensitive application.
 
 ### WHAT CAN WE DO?
+
+
 
 https://github.com/yeasy/docker-compose-files/blob/master/hyperledger_fabric/v2.1.0/examples/chaincode/go/enccc_example/utils.go
