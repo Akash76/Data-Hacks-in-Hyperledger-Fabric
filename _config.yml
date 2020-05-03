@@ -1,3 +1,3 @@
 theme: jekyll-theme-cayman
-title: Data Hacks in hyperledger fabric
-description: Showing how one can extract data in Hyperledger Fabric without being network participant.
+title: Ledger Data Extraction in Hyperledger Fabric
+description: Showing how one can extract data in Hyperledger Fabric without being network participant
