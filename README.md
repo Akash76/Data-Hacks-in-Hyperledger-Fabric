@@ -104,5 +104,6 @@ Blockfile comprises of all important details like endorsement policies, admin an
 
 I think you all have a clear idea about encryption and its advantages. Encryption can be one of many solutions to avoid unforeseen situations as mentioned in my article above. One can have a glance at [this](https://github.com/yeasy/docker-compose-files/blob/master/hyperledger_fabric/v2.1.0/examples/chaincode/go/enccc_example/utils.go) to get an idea on how to utilize encryption algorithms while implementing a chaincode. Ciphertext is hard to understand, making it impossible for one to extract cipher data. 
 
-
 ### CONCLUSION
+
+This article conveys that data can be misused when certain measures are not taken. Many developers concentrate mostly on network and application development part but do not pay much attention when it comes to security criteria. This may not happen in the exact same way as mentioned but it doesn't cost you to be a little careful. In my coming blogs ill dig a little deeper about few more security insights.
